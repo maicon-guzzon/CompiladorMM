@@ -8,7 +8,7 @@ SemanticName = SemanticAnalyzer
 Package = /media/2870F51170F4E70A/Camila/Sistemas/6\u00aa
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = Stream
+Input = String
 Parser = LL
 #RegularDefinitions
 L : [A-Za-z]
@@ -26,7 +26,11 @@ Inteiro :  {InteiroSemExponencial}{Exponencial}?
 
 Real: ( {InteiroSemExponencial}\.({D}*) {Exponencial}?  ) | ( (\.{D}+) {Exponencial}? )
 
-Literal:  (') ([^"'"] ((')('))* [^"'"] )* (')
+Literal:  (') (([^"'"])* ('')* ([^"'"])*)*  (')
+
+ComentarioLinha : (/)(/) .*
+
+ComentarioBloco: "/*" (  [^"*"] | [ \r  \n ]  |  (  "*" +  ( [ ^"*""/"]  |  [\r \n] ) ) )* "*" + "/"
 
 Espacos : [\ \n \r \t]
 
@@ -67,34 +71,36 @@ enquanto = id : "enquanto"
 ref = id : "ref"
 val = id : "val"
 literal = id : "literal"
-//símbolos especiais
+
+//s�mbolos especiais
 ";"
 ","
 "."
-"[" 
-"]"
 "<"
 ">"
-"="
 "("
 ")"
+"[" 
+"]"
 "+"
 "-"
 "*"
 "/"
+"="
 ":"
 ":="
 ".."
 "<="
 "<>"
-"{"
-"}"
 ">="
-"*"
-"/"
+
 
 //Ignorar espa�os em branco e comentarios
  : {Espacos}*
+ : {ComentarioLinha}
+
+//Comentário não fechado implicando em erro léxico
+ :! {ComentarioBloco}
 #NonTerminals
 <programa>
 <bloco>
