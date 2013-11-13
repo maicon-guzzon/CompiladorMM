@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import controller.Controller;
+
+import model.AnalisadorLexico;
+
 import utilitarios.ManipuladorArquivo;
 
 
@@ -229,23 +233,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 		salvarArquivo();
 	}
 
-	private void analiseLexicaActionPerformed(java.awt.event.ActionEvent evt) {
-//		AnalisadorLexico lexico = new AnalisadorLexico();
-//		String[] mensagem = lexico.analiseLexica(janelaEdicao.getText());
-//		janelaErros.setText(mensagem[1]); 
-//		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));		
+	private void analiseLexicaActionPerformed(java.awt.event.ActionEvent evt) {		
+		String[] mensagem = controle.analiseLexica(janelaEdicao.getText());
+		janelaErros.setText(mensagem[1]); 
+		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));		
 	}
 
 	private void analiseSintaticaActionPerformed(java.awt.event.ActionEvent evt) {
-//		AnalisadorSintatico sintatico = new AnalisadorSintatico();
-//		String[] mensagem = sintatico.analiseSintatica(janelaEdicao.getText());
+//		String[] mensagem = controle.analiseSintatica(janelaEdicao.getText());
 //		janelaErros.setText(mensagem[1]); 
 //		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));				
 	}
 
 	private void analiseSemanticaActionPerformed(java.awt.event.ActionEvent evt) {
-//		AnalisadorSemantico semantico = new AnalisadorSemantico();
-//		String[] mensagem = semantico.analiseSemantica(janelaEdicao.getText());
+//		String[] mensagem = controle.analiseSemantica(janelaEdicao.getText());
 //		janelaErros.setText(mensagem[1]); 
 //		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));		
 	}
@@ -305,4 +306,5 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 	private javax.swing.JScrollPane scrollErros;
 	private javax.swing.JScrollPane scrollJanelaEdicao;
 	private javax.swing.JMenuItem sobre;
+	private Controller controle = new Controller();
 }
