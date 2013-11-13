@@ -1,4 +1,4 @@
-package /media/2870F51170F4E70A/Camila/Sistemas/6\u00aa;
+package gals;
 
 public class SemanticError extends AnalysisError
 {

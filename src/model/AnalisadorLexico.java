@@ -33,7 +33,6 @@ public class AnalisadorLexico {
 		resultado[0] = String.valueOf(0);
 		resultado[1] = SUCESSO;
 		return resultado;
-		
 	}
 
 

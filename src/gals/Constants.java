@@ -1,4 +1,4 @@
-package /media/2870F51170F4E70A/Camila/Sistemas/6\u00aa;
+package gals;
 
 public interface Constants extends ScannerConstants, ParserConstants
 {
@@ -13,12 +13,12 @@ public interface Constants extends ScannerConstants, ParserConstants
     int t_programa = 7;
     int t_var = 8;
     int t_caracter = 9;
-    int t_cadeia = 10;
-    int t_procedimento = 11;
-    int t_inicio = 12;
-    int t_fim = 13;
-    int t_inteiro = 14;
-    int t_booleano = 15;
+    int t_inteiro = 10;
+    int t_booleano = 11;
+    int t_real = 12;
+    int t_cadeia = 13;
+    int t_vetor = 14;
+    int t_proc = 15;
     int t_funcao = 16;
     int t_se = 17;
     int t_entao = 18;
@@ -32,12 +32,12 @@ public interface Constants extends ScannerConstants, ParserConstants
     int t_verdadeiro = 26;
     int t_de = 27;
     int t_faca = 28;
-    int t_real = 29;
-    int t_vetor = 30;
-    int t_enquanto = 31;
-    int t_ref = 32;
-    int t_val = 33;
-    int t_literal = 34;
+    int t_enquanto = 29;
+    int t_ref = 30;
+    int t_val = 31;
+    int t_literal = 32;
+    int t_num_real = 33;
+    int t_num_int = 34;
     int t_TOKEN_35 = 35; //";"
     int t_TOKEN_36 = 36; //","
     int t_TOKEN_37 = 37; //"."
@@ -58,5 +58,7 @@ public interface Constants extends ScannerConstants, ParserConstants
     int t_TOKEN_52 = 52; //"<="
     int t_TOKEN_53 = 53; //"<>"
     int t_TOKEN_54 = 54; //">="
+    int t_TOKEN_55 = 55; //"{"
+    int t_TOKEN_56 = 56; //"}"
 
 }

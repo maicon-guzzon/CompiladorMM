@@ -1,9 +1,9 @@
-package /media/2870F51170F4E70A/Camila/Sistemas/6\u00aa;
+package gals;
 
 public class SemanticAnalyzer implements Constants
 {
     public void executeAction(int action, Token token)	throws SemanticError
     {
-        System.out.println("Ação #"+action+", Token: "+token);
+        System.out.println("Aï¿½ï¿½o #"+action+", Token: "+token);
     }	
 }

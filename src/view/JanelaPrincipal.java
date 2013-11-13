@@ -240,9 +240,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 	}
 
 	private void analiseSintaticaActionPerformed(java.awt.event.ActionEvent evt) {
-//		String[] mensagem = controle.analiseSintatica(janelaEdicao.getText());
-//		janelaErros.setText(mensagem[1]); 
-//		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));				
+		String[] mensagem = controle.analiseSintatica(janelaEdicao.getText());
+		janelaErros.setText(mensagem[1]); 
+		janelaEdicao.setCaretPosition(Integer.parseInt(mensagem[0]));				
 	}
 
 	private void analiseSemanticaActionPerformed(java.awt.event.ActionEvent evt) {
