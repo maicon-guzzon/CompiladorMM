@@ -5,10 +5,10 @@ Language = Java
 ScannerName = LexicalAnalyzer
 ParserName = SyntacticAnalyzer
 SemanticName = SemanticAnalyzer
-Package = /media/2870F51170F4E70A/Camila/Sistemas/6\u00aa
+Package = gals
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = String
+Input = Stream
 Parser = LL
 #RegularDefinitions
 L : [A-Za-z]
@@ -16,7 +16,6 @@ D : [0-9]
 A : @
 U : _
 S : #
-
 
 InteiroSemExponencial: 0 | ([1-9]{D}*)
 
@@ -26,7 +25,7 @@ Inteiro :  {InteiroSemExponencial}{Exponencial}?
 
 Real: ( {InteiroSemExponencial}\.({D}*) {Exponencial}?  ) | ( (\.{D}+) {Exponencial}? )
 
-Literal:  (') (([^"'"])* ('')* ([^"'"])*)*  (')
+Literal:  (') (([^"'"])* ('')* ([^"'"])*)*  (') 
 
 ComentarioLinha : (/)(/) .*
 
@@ -37,10 +36,10 @@ Espacos : [\ \n \r \t]
 
 #Tokens
 id : ( {L} ( ( {U}|{A}|{S} )? ({L}|{D}) )*    |    {A} ({L}|{D})+  ( ({A}|{U}|{S})?({L}|{D})+ )*) 
-constanteInteira : {Inteiro} 
-constanteReal: {Real} 
-constanteLiteral : {Literal}
-const
+num_real : {Real} 
+literal : {Literal}
+
+num_int : {Inteiro}
 
 //palavras chave
 programa = id : "programa"
@@ -68,11 +67,9 @@ faca = id : "faca"
 enquanto = id : "enquanto"
 ref = id : "ref"
 val = id : "val"
-literal = id : "literal"
-num_real = id : "num_real"
-num_int = id : "num_int"
+const = id :"const"
 
-//símbolos especiais
+//sï¿½mbolos especiais
 ";"
 ","
 "."
@@ -97,7 +94,7 @@ num_int = id : "num_int"
 "}"
 
 
-//Ignorar espaços em branco e comentarios
+//Ignorar espaï¿½os em branco e comentarios
  : {Espacos}*
  : {ComentarioLinha}
 
@@ -145,23 +142,23 @@ num_int = id : "num_int"
 
 <bloco> ::= <dcl_const>  <dcl_var> <dcl_procs>  <listacomando> ;
  
-<dcl_const> ::= const id "=" <constante>   ";"  <dcl_const> | î ;
+<dcl_const> ::= const id "=" <constante>   ";"  <dcl_const> | ï¿½ ;
 
-<dcl_var> ::= var   <lid>   ":"  <tipo> ";"   <dcl_var> | î ;
+<dcl_var> ::= var   <lid>   ":"  <tipo> ";"   <dcl_var> | ï¿½ ;
  
-<dcl_procs> ::= <dcl_proc> ";" <dcl_procs> | î ;
+<dcl_procs> ::= <dcl_proc> ";" <dcl_procs> | ï¿½ ;
 
 <dcl_proc> ::= proc id   <par_formais>   ";" <bloco>
 	          | funcao id   <par_formais>   ":"  <tipo_pre_definido> ";"   <bloco>  ;                 
 
 <par_formais> ::= "(" <mp_par>  <lid> ":" <tipo_pre_definido>  <rep_par>  ")"  
-                           | î ;
+                           | ï¿½ ;
 
-<rep_par> ::= ";" <mp_par>   <lid> ":"  <tipo_pre_definido> <rep_par> | î ;
+<rep_par> ::= ";" <mp_par>   <lid> ":"  <tipo_pre_definido> <rep_par> | ï¿½ ;
 
 <lid> ::= id  <rep_lid>  ;
 
-<rep_lid> ::= ","  <lid> | î ;
+<rep_lid> ::= ","  <lid> | ï¿½ ;
 
 <mp_par>  ::= ref | val ;
 
@@ -170,7 +167,7 @@ num_int = id : "num_int"
              |   vetor  "[" <constante>  ".."  <constante> <dimensao2> "]" de <tipo_pre_definido> ;
 
 
-<dimensao2> ::= ","  <constante>  ".."  <constante>  |   î ;
+<dimensao2> ::= ","  <constante>  ".."  <constante>  |   ï¿½ ;
 
 
 <constante> ::= id  |  <constante_explicita> ;
@@ -180,7 +177,7 @@ num_int = id : "num_int"
 
 
 <listacomando> ::= "{"   <comando>  <replistacomando>  "}" ;                               
-<replistacomando> ::=   ";"  <comando>  <replistacomando>  |  î ;
+<replistacomando> ::=   ";"  <comando>  <replistacomando>  |  ï¿½ ;
 
 
 <comando> ::= id <rcomid>
@@ -188,34 +185,34 @@ num_int = id : "num_int"
              | se <expressao> entao <comando> <senaoparte> 
              | enquanto <expressao> faca <comando>                               
              | leia "(" <lid> ")"                                    
-             | escreva "(" <expressao> <rep_lexpr> ")"  |  î ;
+             | escreva "(" <expressao> <rep_lexpr> ")"  |  ï¿½ ;
 
-<senaoparte> ::= senao  <comando>  | î ;
+<senaoparte> ::= senao  <comando>  | ï¿½ ;
 
 <rcomid> ::= ":=" <expressao> 
                    |   "[" <expressao> <expressao2> "]" ":=" <expressao> 
                    |   "(" <expressao> <rep_lexpr> ")" 
-                   |   î ;
+                   |   ï¿½ ;
 
-<expressao2> ::= ","  <expressao>  |  î ;
+<expressao2> ::= ","  <expressao>  |  ï¿½ ;
 
-<rep_lexpr>  ::= "," <expressao> <rep_lexpr> | î ;
+<rep_lexpr>  ::= "," <expressao> <rep_lexpr> | ï¿½ ;
 
 <expressao>  ::= <expsimp> <resto_expressao> ;
 
-<resto_expressao> ::= <oprel> <expsimp> | î ;
+<resto_expressao> ::= <oprel> <expsimp> | ï¿½ ;
 
 <oprel> ::= "=" | "<" | ">" | ">=" | "<=" | "<>" ;
 
 <expsimp> ::= <termo> <rep_expsimp> ;
 
-<rep_expsimp> ::= <op_add> <termo> <rep_expsimp> | î ;
+<rep_expsimp> ::= <op_add> <termo> <rep_expsimp> | ï¿½ ;
                       
 <op_add> ::= "+" | "-" | ou ;
 
 <termo> ::= <fator> <rep_termo> ;
 
-<rep_termo> ::= <op_mult> <fator> <rep_termo> | î ;
+<rep_termo> ::= <op_mult> <fator> <rep_termo> | ï¿½ ;
 
 <op_mult> ::= "*" | "/" | e ;
 
@@ -231,7 +228,7 @@ num_int = id : "num_int"
 
 <rvar> ::= "(" <expressao> <rep_lexpr> ")"  
               | "[" <expressao> <expressao2> "]"
-              | î ;
+              | ï¿½ ;
   
 <constante_explicita>::=   num_int  |  num_real 
                           |  falso  |  verdadeiro  |  literal ;

@@ -9,6 +9,13 @@ import gals.SyntaticError;
 
 public class AnalisadorSintatico {
 	
+	/**
+	 *
+	 * @author Maicon e Michelle
+	 * Data: 18/11/2013
+	 *  
+	 */
+	
 	private static final String SUCESSO = "O programa não contem erros sintáticos";
 	
 	public String[] analiseSintatica(String programa) {	

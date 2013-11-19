@@ -17,7 +17,7 @@ public class LexicalAnalyzer implements Constants
 
     public void setInput(String input)
     {
-        this.input = input;
+    	this.input = input;
         setPosition(0);
     }
 

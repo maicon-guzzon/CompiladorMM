@@ -10,6 +10,12 @@ import javax.swing.JFileChooser;
 
 public class ManipuladorArquivo {
 
+	/**
+	 *
+	 * @author Maicon e Michelle
+	 * Data: 18/11/2013
+	 *  
+	 */
 	public ManipuladorArquivo() {}
 	
 	public String lerArquivo(JFileChooser abrirDialog) {

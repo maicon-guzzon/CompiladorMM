@@ -5,6 +5,13 @@ import model.AnalisadorSintatico;
 
 public class Controller {
 	
+	/**
+	 *
+	 * @author Maicon e Michelle
+	 * Data: 18/11/2013
+	 *  
+	 */
+	
 	public String[] analiseLexica(String programa){
 		AnalisadorLexico lexico = new AnalisadorLexico();
 		return lexico.analiseLexica(programa);

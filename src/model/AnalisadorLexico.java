@@ -6,7 +6,12 @@ import gals.Token;
 
 public class AnalisadorLexico {
 
-	
+	/**
+	 *
+	 * @author Maicon e Michelle
+	 * Data: 18/11/2013
+	 *  
+	 */
 	private static final String SUCESSO = "O programa não contém erros léxicos";
 
 	private LexicalAnalyzer lexico = new LexicalAnalyzer();
